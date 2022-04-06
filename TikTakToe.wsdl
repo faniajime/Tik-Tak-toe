@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+
+<definitions name="TikTakToe"
+             targetNamespace="urn:TikTakToe"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="urn:TikTakToe"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+			 
+  
+	<types>
+		<xsd:schema targetNamespace="urn:TikTakToe"/>
+	</types>
+  
+	<message name="realizarTurnoIN">
+		<part name="coordenadaX" type="xsd:int"/>
+		<part name="coordenadaY" type="xsd:int"/>
+		<part name="tablero" type="xsd:string"/>
+	</message>
+
+	<message name="realizarTurnoOUT">
+		<part name="return" type="xsd:string"/>
+	</message>
+
+	<message name="revisarGanadorIN">
+		<part name="tablero" type="xsd:string"/>
+	</message>
+
+	<message name="revisarGanadorOUT">
+		<part name="return" type="xsd:string"/>
+	</message>
+
+	<message name="obtenerRecordsIN">
+	</message>
+
+	<message name="obtenerRecordsOUT">
+		<part name="return" type="xsd:string"/>
+	</message>
+	
+	<message name="verificarRecordIN">
+		<part name="idUsuario" type="xsd:string"/>
+		<part name="tiempoActualSegundos" type="xsd:int"/>
+	</message>
+
+	<message name="verificarRecordOUT">
+	</message>
+  
+  
+  
+  
+  <!--Puerto para comunicar con la clase tiktaktoe-->
+   
+	<portType name="TikTakToePort">
+
+		<operation name="turno">
+			<documentation>TikTakToe::turno() permite realizar una jugada en el tablero</documentation>
+			<input message="tns:realizarTurnoIN"/>
+			<output message="tns:realizarTurnoOUT"/>		
+    	</operation>
+
+		<operation name="revisarGanador">
+			<documentation>TikTakToe::revisarGanador() Verifica si hay un ganador</documentation>
+			<input message="tns:revisarGanadorIN"/>
+			<output message="tns:revisarGanadorOUT"/>		
+		</operation>
+		
+		<operation name="obtenerRecords">
+			<documentation>TikTakToe::obtenerRecords() Obtener records actuales</documentation>
+			<input message="tns:obtenerRecordsIN"/>
+			<output message="tns:obtenerRecordsOUT"/>		
+		</operation>
+		
+		<operation name="verificarRecord">
+			<documentation>TikTakToe::obtenerRecords() Verficar los records</documentation>
+			<input message="tns:verificarRecordIN"/>
+			<output message="tns:verificarRecordOUT"/>		
+		</operation>
+
+	</portType>
+
+
+	<!-- Vinculación de los llamados con el transporte - RPC, SOAP/Encoded over HTTP -->
+
+	<binding name="TikTakToeBinding" type="tns:TikTakToePort">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		
+		<operation name="turno">
+			<soap:operation soapAction="urn:TikTakToe#TikTakToe#turno"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</output>
+		</operation>
+		
+		<operation name="revisarGanador">
+			<soap:operation soapAction="urn:TikTakToe#TikTakToe#revisarGanador"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</output>
+		</operation>
+		
+		<operation name="obtenerRecords">
+			<soap:operation soapAction="urn:TikTakToe#TikTakToe#obtenerRecords"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</output>
+		</operation>
+		
+		<operation name="verificarRecord">
+			<soap:operation soapAction="urn:TikTakToe#TikTakToe#verificarRecord"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:TikTakToe"/>
+			</output>
+		</operation>
+    
+	</binding>
+
+	<!-- Punto de comunicación -->
+
+	<service name="TikTakToeService">
+		<port name="TikTakToePort" binding="tns:TikTakToeBinding">
+			<soap:address location="http://titanic.ecci.ucr.ac.cr/~eb23452/gato/"/>
+		</port>
+	</service>
+</definitions>

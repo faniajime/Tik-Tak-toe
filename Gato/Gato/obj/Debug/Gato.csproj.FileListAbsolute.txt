@@ -1,0 +1,10 @@
+C:\Users\fejimene\Downloads\TAR\TAR-PRO2-WEB-master\Gato\Gato\bin\Debug\Gato.exe.config
+C:\Users\fejimene\Downloads\TAR\TAR-PRO2-WEB-master\Gato\Gato\bin\Debug\Gato.exe
+C:\Users\fejimene\Downloads\TAR\TAR-PRO2-WEB-master\Gato\Gato\bin\Debug\Gato.pdb
+C:\Users\fejimene\Downloads\TAR\TAR-PRO2-WEB-master\Gato\Gato\obj\Debug\Gato.csproj.AssemblyReference.cache
+C:\Users\fejimene\Downloads\TAR\TAR-PRO2-WEB-master\Gato\Gato\obj\Debug\Gato.Tablero.resources
+C:\Users\fejimene\Downloads\TAR\TAR-PRO2-WEB-master\Gato\Gato\obj\Debug\Gato.Properties.Resources.resources
+C:\Users\fejimene\Downloads\TAR\TAR-PRO2-WEB-master\Gato\Gato\obj\Debug\Gato.csproj.GenerateResource.cache
+C:\Users\fejimene\Downloads\TAR\TAR-PRO2-WEB-master\Gato\Gato\obj\Debug\Gato.csproj.CoreCompileInputs.cache
+C:\Users\fejimene\Downloads\TAR\TAR-PRO2-WEB-master\Gato\Gato\obj\Debug\Gato.exe
+C:\Users\fejimene\Downloads\TAR\TAR-PRO2-WEB-master\Gato\Gato\obj\Debug\Gato.pdb

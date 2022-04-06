@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:TikTakToe" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="TikTakToe" targetNamespace="urn:TikTakToe" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:TikTakToe" />
+  </wsdl:types>
+  <wsdl:message name="realizarTurnoIN">
+    <wsdl:part name="coordenadaX" type="xsd:int" />
+    <wsdl:part name="coordenadaY" type="xsd:int" />
+    <wsdl:part name="tablero" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="realizarTurnoOUT">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="revisarGanadorIN">
+    <wsdl:part name="tablero" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="revisarGanadorOUT">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="obtenerRecordsIN" />
+  <wsdl:message name="obtenerRecordsOUT">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="verificarRecordIN">
+    <wsdl:part name="idUsuario" type="xsd:string" />
+    <wsdl:part name="tiempoActualSegundos" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="verificarRecordOUT" />
+  <wsdl:portType name="TikTakToePort">
+    <wsdl:operation name="turno">
+      <documentation>TikTakToe::turno() permite realizar una jugada en el tablero</documentation>
+      <wsdl:input message="tns:realizarTurnoIN" />
+      <wsdl:output message="tns:realizarTurnoOUT" />
+    </wsdl:operation>
+    <wsdl:operation name="revisarGanador">
+      <documentation>TikTakToe::revisarGanador() Verifica si hay un ganador</documentation>
+      <wsdl:input message="tns:revisarGanadorIN" />
+      <wsdl:output message="tns:revisarGanadorOUT" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerRecords">
+      <documentation>TikTakToe::obtenerRecords() Obtener records actuales</documentation>
+      <wsdl:input message="tns:obtenerRecordsIN" />
+      <wsdl:output message="tns:obtenerRecordsOUT" />
+    </wsdl:operation>
+    <wsdl:operation name="verificarRecord">
+      <documentation>TikTakToe::obtenerRecords() Verficar los records</documentation>
+      <wsdl:input message="tns:verificarRecordIN" />
+      <wsdl:output message="tns:verificarRecordOUT" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TikTakToeBinding" type="tns:TikTakToePort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="turno">
+      <soap:operation soapAction="urn:TikTakToe#TikTakToe#turno" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="revisarGanador">
+      <soap:operation soapAction="urn:TikTakToe#TikTakToe#revisarGanador" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerRecords">
+      <soap:operation soapAction="urn:TikTakToe#TikTakToe#obtenerRecords" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificarRecord">
+      <soap:operation soapAction="urn:TikTakToe#TikTakToe#verificarRecord" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:TikTakToe" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TikTakToeService">
+    <wsdl:port name="TikTakToePort" binding="tns:TikTakToeBinding">
+      <soap:address location="http://titanic.ecci.ucr.ac.cr/~eb23452/gato//" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
